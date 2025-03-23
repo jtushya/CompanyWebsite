@@ -91,7 +91,7 @@ const Careers = () => {
               Join Our Team
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Be part of an innovative team that\'s shaping the future of digital technology
+              Be part of an innovative team that's shaping the future of digital technology
             </p>
           </motion.div>
         </div>
@@ -152,7 +152,7 @@ const Careers = () => {
                 Our Culture
               </h2>
               <p className="text-white/80 mb-8">
-                At TechWalk, we believe in fostering a culture of innovation, collaboration, and continuous learning. Our team members are passionate about technology and committed to delivering exceptional results.
+                At Planckk, we believe in fostering a culture of innovation, collaboration, and continuous learning. Our team members are passionate about technology and committed to delivering exceptional results.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center text-white">
