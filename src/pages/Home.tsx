@@ -145,11 +145,17 @@ const Home = () => {
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl">
+              <button
+                onClick={() => navigate('/contact')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
+              >
                 Get Started Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
-              <button className="bg-white hover:bg-gray-50 text-blue-600 px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl">
+              <button
+                onClick={() => navigate('/portfolio')}
+                className="bg-white hover:bg-gray-50 text-blue-600 px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
+              >
                 View Portfolio
               </button>
             </motion.div>
