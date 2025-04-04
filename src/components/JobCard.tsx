@@ -19,6 +19,13 @@ const JobCard: React.FC<JobCardProps> = ({
   description,
   requirements,
 }) => {
+  const scrollToForm = () => {
+    const form = document.querySelector('form');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -64,7 +71,10 @@ const JobCard: React.FC<JobCardProps> = ({
         </ul>
       </div>
       
-      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors duration-200">
+      <button 
+        onClick={scrollToForm}
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors duration-200"
+      >
         Apply Now
       </button>
     </motion.div>

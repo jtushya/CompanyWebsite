@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import JobCard from '../components/JobCard';
@@ -10,67 +10,94 @@ const Careers = () => {
   const benefits = [
     {
       icon: <Users className="h-8 w-8" />,
-      title: 'Collaborative Culture',
-      description: 'Work with talented individuals in a supportive environment.',
+      title: 'Learning Environment',
+      description: 'Work alongside experienced professionals and learn industry best practices.',
     },
     {
       icon: <Heart className="h-8 w-8" />,
-      title: 'Health & Wellness',
-      description: 'Comprehensive health coverage and wellness programs.',
+      title: 'Flexible Schedule',
+      description: 'Balance your studies with hands-on work experience.',
     },
     {
       icon: <Zap className="h-8 w-8" />,
-      title: 'Growth Opportunities',
-      description: 'Continuous learning and career development support.',
+      title: 'Career Growth',
+      description: 'Potential for full-time roles upon successful completion.',
     },
     {
       icon: <Trophy className="h-8 w-8" />,
-      title: 'Recognition & Rewards',
-      description: 'Performance-based bonuses and recognition programs.',
+      title: 'Real Projects',
+      description: 'Work on actual client projects and build your portfolio.',
     },
   ];
 
   const jobs = [
     {
-      title: 'Senior Full Stack Developer',
+      title: 'Web Development Intern',
       department: 'Engineering',
       location: 'Remote',
-      type: 'Full-time',
-      description: 'We\'re looking for an experienced Full Stack Developer to join our engineering team and help build innovative digital solutions.',
+      type: 'Internship',
+      description: 'Join our engineering team as a web development intern and gain hands-on experience with modern web technologies.',
       requirements: [
-        '5+ years of experience with modern web technologies',
-        'Strong proficiency in React, Node.js, and TypeScript',
-        'Experience with cloud platforms (AWS/GCP)',
-        'Excellent problem-solving skills',
+        'Currently pursuing B.Tech/B.E in Computer Science or related field',
+        'Basic knowledge of HTML, CSS, and JavaScript',
+        'Familiarity with React is a plus',
+        'Strong willingness to learn',
       ],
     },
     {
-      title: 'Digital Marketing Specialist',
+      title: 'Digital Marketing Intern',
       department: 'Marketing',
       location: 'Hybrid',
-      type: 'Full-time',
-      description: 'Join our marketing team to create and execute digital marketing strategies for our clients.',
+      type: 'Internship',
+      description: 'Learn and implement digital marketing strategies while working on real client projects.',
       requirements: [
-        '3+ years of digital marketing experience',
-        'Proficiency in SEO, SEM, and social media marketing',
-        'Experience with marketing analytics tools',
-        'Strong communication skills',
+        'Currently pursuing degree in Marketing/Business/Communications',
+        'Understanding of social media platforms',
+        'Good communication skills',
+        'Creative mindset',
       ],
     },
     {
-      title: 'UI/UX Designer',
+      title: 'UI/UX Design Intern',
       department: 'Design',
       location: 'Remote',
-      type: 'Full-time',
-      description: 'Create beautiful and intuitive user interfaces for web and mobile applications.',
+      type: 'Internship',
+      description: 'Learn the principles of user interface and experience design through hands-on project work.',
       requirements: [
-        '3+ years of UI/UX design experience',
-        'Proficiency in Figma and Adobe Creative Suite',
-        'Strong portfolio showcasing web and mobile designs',
-        'Experience with design systems',
+        'Currently pursuing degree in Design/Computer Science',
+        'Basic knowledge of design tools (Figma/Adobe XD)',
+        'Strong visual design sense',
+        'Attention to detail',
       ],
     },
   ];
+
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    position: string;
+    education: string;
+    resume: File | null;
+  }>({
+    name: '',
+    email: '',
+    phone: '',
+    position: '',
+    education: '',
+    resume: null,
+  });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log('Application submitted:', formData);
+  };
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    setFormData({ ...formData, resume: file });
+  };
 
   return (
     <div className="pt-16">
@@ -88,10 +115,10 @@ const Careers = () => {
             transition={{ delay: 0.2 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Join Our Team
+              Start Your Career Journey
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Be part of an innovative team that's shaping the future of digital technology
+              Launch your career with our internship program. Gain real-world experience while completing your studies.
             </p>
           </motion.div>
         </div>
@@ -101,7 +128,7 @@ const Careers = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Why Work With Us
+            Why Intern With Us
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
@@ -125,67 +152,124 @@ const Careers = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Open Positions
+            Available Internships
           </h2>
           <div className="grid gap-8">
             {jobs.map((job, index) => (
               <JobCard
                 key={index}
-                title={job.title}
-                department={job.department}
-                location={job.location}
-                type={job.type}
-                description={job.description}
-                requirements={job.requirements}
+                {...job}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Culture Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Application Form */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Apply Now
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">
-                Our Culture
-              </h2>
-              <p className="text-white/80 mb-8">
-                At Planckk, we believe in fostering a culture of innovation, collaboration, and continuous learning. Our team members are passionate about technology and committed to delivering exceptional results.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-center text-white">
-                  <span className="h-2 w-2 bg-white rounded-full mr-3"></span>
-                  Innovation-driven environment
-                </li>
-                <li className="flex items-center text-white">
-                  <span className="h-2 w-2 bg-white rounded-full mr-3"></span>
-                  Work-life balance
-                </li>
-                <li className="flex items-center text-white">
-                  <span className="h-2 w-2 bg-white rounded-full mr-3"></span>
-                  Professional development opportunities
-                </li>
-                <li className="flex items-center text-white">
-                  <span className="h-2 w-2 bg-white rounded-full mr-3"></span>
-                  Inclusive and diverse workplace
-                </li>
-              </ul>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
-                alt="Team collaboration"
-                className="rounded-lg shadow-lg"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop"
-                alt="Office culture"
-                className="rounded-lg shadow-lg mt-8"
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
-          </div>
+            
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              />
+            </div>
+            
+            <div>
+              <label htmlFor="position" className="block text-sm font-medium text-gray-700 mb-1">
+                Position Applied For
+              </label>
+              <select
+                id="position"
+                name="position"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+              >
+                <option value="">Select a position</option>
+                <option value="web-dev">Web Development Intern</option>
+                <option value="marketing">Digital Marketing Intern</option>
+                <option value="design">UI/UX Design Intern</option>
+              </select>
+            </div>
+            
+            <div>
+              <label htmlFor="education" className="block text-sm font-medium text-gray-700 mb-1">
+                Current Education
+              </label>
+              <textarea
+                id="education"
+                name="education"
+                rows={3}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="Tell us about your current education, year of study, and institution"
+                onChange={(e) => setFormData({ ...formData, education: e.target.value })}
+              ></textarea>
+            </div>
+            
+            <div>
+              <label htmlFor="resume" className="block text-sm font-medium text-gray-700 mb-1">
+                Resume/CV
+              </label>
+              <input
+                type="file"
+                id="resume"
+                name="resume"
+                accept=".pdf,.doc,.docx"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={handleFileChange}
+              />
+              <p className="mt-1 text-sm text-gray-500">PDF, DOC, or DOCX (Max 2MB)</p>
+            </div>
+            
+            <button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors duration-200 font-semibold"
+            >
+              Submit Application
+            </button>
+          </form>
         </div>
       </section>
     </div>
