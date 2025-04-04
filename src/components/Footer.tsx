@@ -56,8 +56,15 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-800">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>Phone: <a href="tel:+919384107679" className="hover:text-blue-600 transition-colors">+91 984107679</a></li>
-              <li>Email: <a href="mailto:info@planckk.com" className="hover:text-blue-600 transition-colors">info@planckk.com</a></li>
+              <li>
+                Phone: 
+                <a href="tel:+919384107679" className="hover:text-blue-600 transition-colors"> +91 9384107679</a>, 
+                <a href="tel:+919842533351" className="hover:text-blue-600 transition-colors"> +91 98425 33351</a>
+              </li>
+              <li>
+                Email: 
+                <a href="mailto:info@planckk.com" className="hover:text-blue-600 transition-colors"> info@planckk.com</a>
+              </li>
             </ul>
           </div>
         </div>

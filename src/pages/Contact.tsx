@@ -10,7 +10,10 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6" />,
       title: 'Call Us',
-      details: ['+91 9384107679'],
+      details: [
+        <a href="tel:+919384107679" className="hover:text-blue-600 transition-colors">+91 9384107679</a>,
+        <a href="tel:+919842533351" className="hover:text-blue-600 transition-colors">+91 98425 33351</a>,
+      ],
     },
     {
       icon: <Mail className="h-6 w-6" />,
