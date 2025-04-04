@@ -18,16 +18,16 @@ const Footer = () => {
               Empowering businesses through innovative digital solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors">
                 <Instagram size={20} />
               </a>
             </div>
@@ -56,8 +56,8 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-800">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>Phone: 984107679</li>
-              <li>Email: info@planckk.com</li>
+              <li>Phone: <a href="tel:+919384107679" className="hover:text-blue-600 transition-colors">+91 984107679</a></li>
+              <li>Email: <a href="mailto:info@planckk.com" className="hover:text-blue-600 transition-colors">info@planckk.com</a></li>
             </ul>
           </div>
         </div>

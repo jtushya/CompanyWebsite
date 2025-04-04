@@ -18,13 +18,13 @@ const projects = [
   {
     title: 'LED Lighting Company',
     image: '/images/img5.png',
-    link: '',
+    link: 'https://arcpro.vercel.app/',
     description: 'A website for an LED lighting company.'
   },
   {
     title: 'Mental Health Chat Bot',
     image: '/images/img4.png',
-    link: '',
+    link: 'https://mental-welness.vercel.app/',
     description: 'A mental health chat bot.'
   }
 ];
