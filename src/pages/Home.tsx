@@ -243,7 +243,7 @@ const Home = () => {
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Our 6-Hour Website Process
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
               { number: '01', title: 'Consultation', description: 'Quick requirements gathering' },
               { number: '02', title: 'Design', description: 'Rapid prototyping & design' },
