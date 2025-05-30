@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
@@ -28,6 +29,7 @@ const Services = () => {
         'Color grading and correction',
         'Sound design and mixing',
       ],
+      link: '/services/video-editing'
     },
     {
       id: 'web',
@@ -40,6 +42,7 @@ const Services = () => {
         'CMS integration',
         'Performance optimization',
       ],
+      link: '/services/website-creation'
     },
     {
       id: 'digital',
@@ -52,6 +55,7 @@ const Services = () => {
         'Digital workflow optimization',
         'Technology consultation',
       ],
+      link: '/services/digital-transformation'
     },
     {
       id: 'social',
@@ -64,6 +68,7 @@ const Services = () => {
         'Community management',
         'Analytics and reporting',
       ],
+      link: '/services/social-media'
     },
     {
       id: 'marketing',
@@ -76,6 +81,7 @@ const Services = () => {
         'Content marketing',
         'Marketing automation',
       ],
+      link: '/services/digital-marketing'
     },
     {
       id: 'seo',
@@ -88,6 +94,7 @@ const Services = () => {
         'Google Ads campaign management',
         'Performance tracking',
       ],
+      link: '/services/seo'
     },
     {
       id: 'app',
@@ -100,6 +107,7 @@ const Services = () => {
         'App store optimization',
         'Maintenance and support',
       ],
+      link: '/services/mobile-apps'
     },
     {
       id: 'custom',
@@ -112,6 +120,7 @@ const Services = () => {
         'Database design',
         'System integration',
       ],
+      link: '/services/custom-software'
     },
   ];
 
@@ -150,26 +159,31 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <motion.div
+              <Link
                 key={service.id}
-                id={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-white to-blue-50 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+                to={service.link}
+                className="block"
               >
-                <div className="text-blue-600 mb-6">{service.icon}</div>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-800">{service.title}</h2>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-gray-600">
-                      <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+                <motion.div
+                  id={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={servicesInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-white to-blue-50 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-1"
+                >
+                  <div className="text-blue-600 mb-6">{service.icon}</div>
+                  <h2 className="text-2xl font-semibold mb-4 text-gray-800">{service.title}</h2>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-gray-600">
+                        <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
@@ -184,9 +198,12 @@ const Services = () => {
           <p className="text-xl text-gray-600 mb-8">
             Let's discuss how we can help you achieve your digital goals
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
+          <Link
+            to="/contact"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
             Get Started
-          </button>
+          </Link>
         </div>
       </section>
     </div>

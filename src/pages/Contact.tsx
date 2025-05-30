@@ -12,7 +12,6 @@ const Contact = () => {
       title: 'Call Us',
       details: [
         <a href="tel:+919384107679" className="hover:text-blue-600 transition-colors">+91 9384107679</a>,
-        // <a href="tel:+919842533351" className="hover:text-blue-600 transition-colors">+91 98425 33351</a>,
       ],
     },
     {
@@ -31,11 +30,12 @@ const Contact = () => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const data = {
-      'entry.1939162769': formData.get('name') as string,
-      'entry.255032337': formData.get('phone') as string,
-      'entry.1576592427': formData.get('orgName') as string,
+      'entry.1939162769': formData.get('name'),
+      'entry.255032337': formData.get('phone'),
+      'entry.1576592427': formData.get('orgName'),
     };
 
+    // Submit to Google Forms
     fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSeKNDlgde6lgX-DfoXXOKNjIpTEGHGqs6MGAN_O3hDK00TGSg/formResponse', {
       method: 'POST',
       mode: 'no-cors',
@@ -43,10 +43,13 @@ const Contact = () => {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: new URLSearchParams(data).toString(),
-    }).then(() => {
-      alert('Form submitted successfully!');
-    }).catch(() => {
-      alert('There was an error submitting the form.');
+    })
+    .then(() => {
+      alert('Thank you for contacting us! We will get back to you shortly.');
+      event.currentTarget.reset();
+    })
+    .catch(() => {
+      alert('There was an error submitting the form. Please try again or email us directly at info@planckk.com');
     });
   };
 
@@ -78,7 +81,7 @@ const Contact = () => {
       {/* Contact Information */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
@@ -127,7 +130,7 @@ const Contact = () => {
                     Phone Number
                   </label>
                   <input
-                    type="text"
+                    type="tel"
                     id="phone"
                     name="phone"
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
@@ -149,7 +152,7 @@ const Contact = () => {
                 <div>
                   <button
                     type="submit"
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 w-full justify-center"
                   >
                     Send Message
                   </button>

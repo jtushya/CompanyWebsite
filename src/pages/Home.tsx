@@ -14,7 +14,8 @@ import {
   Clock,
   CheckCircle,
   Zap,
-  Award
+  Award,
+  Quote
 } from 'lucide-react';
 
 const services = [
@@ -52,10 +53,16 @@ const services = [
 
 const testimonials = [
   {
-    content: 'TechWalk delivered our website in just 6 hours! The quality and speed were incredible. They transformed our online presence completely.'
+    content: 'TechWalk delivered our website in just 6 hours! The quality and speed were incredible. They transformed our online presence completely.',
+    type: 'Business Owner'
   },
   {
-    content: 'The speed and quality of their website development service is unmatched. They delivered exactly what we needed in record time!'
+    content: 'The speed and quality of their website development service is unmatched. They delivered exactly what we needed in record time!',
+    type: 'Startup Founder'
+  },
+  {
+    content: 'Exceptional service and attention to detail. Our website looks professional and modern, and it was delivered so quickly!',
+    type: 'Marketing Director'
   }
 ];
 
@@ -274,16 +281,18 @@ const Home = () => {
           <h2 className="text-4xl font-bold text-center mb-16 text-white">
             What Our Clients Say
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.2 }}
-                className="bg-white p-6 rounded-xl shadow-lg"
+                className="bg-white p-8 rounded-xl shadow-lg relative"
               >
-                <p className="text-gray-600">{testimonial.content}</p>
+                <Quote className="absolute text-blue-100 h-12 w-12 -top-6 -left-6" />
+                <p className="text-gray-600 mb-6 relative z-10">{testimonial.content}</p>
+                <div className="text-blue-600 font-medium">{testimonial.type}</div>
               </motion.div>
             ))}
           </div>
